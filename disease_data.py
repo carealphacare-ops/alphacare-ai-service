@@ -1,0 +1,286 @@
+"""
+Static disease-symptom knowledge base used to train the ML model.
+Each entry: disease name, specKey, severity, list of symptoms/keywords.
+"""
+
+DISEASE_DATA = [
+    # General
+    {
+        "disease": "Common Cold",
+        "specKey": "general",
+        "severity": "mild",
+        "description": "A viral infection of the upper respiratory tract.",
+        "symptoms": ["runny nose", "sore throat", "sneezing", "cough", "mild fever", "congestion",
+                     "headache", "fatigue", "watery eyes", "nasal discharge"],
+    },
+    {
+        "disease": "Influenza (Flu)",
+        "specKey": "general",
+        "severity": "moderate",
+        "description": "A highly contagious viral respiratory illness.",
+        "symptoms": ["high fever", "chills", "body aches", "muscle pain", "fatigue", "headache",
+                     "cough", "sore throat", "runny nose", "vomiting", "diarrhea,"],
+    },
+    {
+        "disease": "Typhoid Fever",
+        "specKey": "general",
+        "severity": "moderate",
+        "description": "A bacterial infection that can spread throughout the body.",
+        "symptoms": ["sustained fever", "weakness", "abdominal pain", "headache", "loss of appetite",
+                     "diarrhea", "constipation", "rose spots", "enlarged spleen"],
+    },
+    {
+        "disease": "Dengue Fever",
+        "specKey": "general",
+        "severity": "moderate",
+        "description": "A mosquito-borne viral infection causing severe flu-like illness.",
+        "symptoms": ["high fever", "severe headache", "pain behind eyes", "joint pain", "muscle pain",
+                     "rash", "mild bleeding", "nausea", "vomiting", "bone pain", "dengue"],
+    },
+        {
+        "disease": "Influenza (Flu)",
+        "specKey": "general",
+        "severity": "moderate",
+        "description": "A highly contagious viral respiratory illness.",
+        "symptoms": ["high fever", "chills", "body aches", "muscle pain", "fatigue", "headache",
+                     "cough", "sore throat", "runny nose", "vomiting", "diarrhea,"],
+    },
+    {
+    "disease": "Food Poisoning",
+    "specKey": "general",
+    "severity": "mild",
+    "description": "Illness caused by contaminated food or drink.",
+    "symptoms": [
+        "nausea", "vomiting",  "diarrhea","diarrhea","stomach pain", "abdominal cramps",]
+},
+{
+    "disease": "Electric Shock",
+    "specKey": "general",
+    "severity": "moderate",
+    "description": "Injury caused by electric current.",
+    "symptoms": [
+        "electric shock","electrik shock","burn","pain","muscle pain"],
+},
+    # Cardiology
+    {
+        "disease": "Hypertension (High Blood Pressure)",
+        "specKey": "cardio",
+        "severity": "moderate",
+        "description": "Persistently elevated blood pressure in the arteries.",
+        "symptoms": ["headache", "dizziness", "blurred vision", "chest pain", "shortness of breath",
+                     "high blood pressure", "nose bleed", "palpitations"],
+    },
+    {
+        "disease": "Heart Attack",
+        "specKey": "cardio",
+        "severity": "emergency",
+        "description": "Blockage of blood flow to the heart muscle.",
+        "symptoms": ["chest pain", "crushing chest pain", "left arm pain", "jaw pain",
+                     "shortness of breath", "sweating", "nausea", "dizziness", "heart attack",
+                     "chest pressure", "pain radiating"],
+    },
+    {
+        "disease": "Angina",
+        "specKey": "cardio",
+        "severity": "moderate",
+        "description": "Chest pain caused by reduced blood flow to the heart.",
+        "symptoms": ["chest pain", "tightness in chest", "pressure in chest", "pain in shoulder",
+                     "pain in arm", "shortness of breath", "dizziness", "nausea", "fatigue"],
+    },
+    {
+        "disease": "Heart Failure",
+        "specKey": "cardio",
+        "severity": "emergency",
+        "description": "The heart does not pump blood as well as it should.",
+        "symptoms": ["shortness of breath", "swollen legs", "swollen ankles", "fatigue",
+                     "rapid heartbeat", "persistent cough", "chest pain", 
+                     "difficulty breathing", "edema"],
+    },
+    # Neurology
+    {
+        "disease": "Migraine",
+        "specKey": "neuro",
+        "severity": "moderate",
+        "description": "Recurring headaches that can be severe and debilitating.",
+        "symptoms": ["severe headache", "throbbing headache", "nausea", "vomiting",
+                     "sensitivity to light", "sensitivity to sound", "aura", "visual disturbance",
+                     "one-sided headache", "migraine"],
+    },
+    {
+        "disease": "Stroke",
+        "specKey": "neuro",
+        "severity": "emergency",
+        "description": "Brain damage caused by interrupted blood flow to the brain.",
+        "symptoms": ["sudden numbness", "face drooping", "arm weakness", "speech difficulty",
+                     "confusion", "vision problem", "severe headache", "stroke", "paralysis",
+                     "slurred speech", "loss of balance"],
+    },
+    {
+        "disease": "Epilepsy",
+        "specKey": "neuro",
+        "severity": "moderate",
+        "description": "A neurological disorder marked by recurrent seizures.",
+        "symptoms": ["seizure", "convulsions", "loss of consciousness", "staring spell",
+                     "jerking movements", "confusion", "falling", "uncontrolled movements"],
+    },
+    {
+        "disease": "Tension Headache",
+        "specKey": "neuro",
+        "severity": "mild",
+        "description": "The most common type of headache caused by muscle tension.",
+        "symptoms": ["headache", "pressure in head", "tight band around head", "neck pain",
+                     "shoulder pain", "tender scalp", "mild headache", "dull ache"],
+    },
+    # Dermatology
+    {
+        "disease": "Eczema (Atopic Dermatitis)",
+        "specKey": "derma",
+        "severity": "mild",
+        "description": "A condition that makes skin red, inflamed, and itchy.",
+        "symptoms": ["itchy skin", "rash", "dry skin", "scaly skin", "inflamed skin",
+                     "red patches", "cracked skin", "weeping skin", "eczema", "skin irritation"],
+    },
+    {
+        "disease": "Psoriasis",
+        "specKey": "derma",
+        "severity": "moderate",
+        "description": "A skin disease causing red, itchy scaly patches.",
+        "symptoms": ["red patches", "silver scales", "dry cracked skin", "itching", "burning skin",
+                     "thickened nails", "swollen joints", "psoriasis", "plaques on skin"],
+    },
+    {
+        "disease": "Acne",
+        "specKey": "derma",
+        "severity": "mild",
+        "description": "A skin condition where hair follicles are clogged with oil and dead skin.",
+        "symptoms": ["pimples", "blackheads", "whiteheads", "cysts", "oily skin", "acne",
+                     "facial breakout", "painful bumps on face", "scarring"],
+    },
+    {
+        "disease": "Urticaria (Hives)",
+        "specKey": "derma",
+        "severity": "mild",
+        "description": "Itchy welts that appear on the skin due to allergic reactions.",
+        "symptoms": ["hives", "welts", "itchy skin", "swelling", "red skin", "urticaria",
+                     "allergic reaction", "skin bumps", "burning sensation"],
+    },
+    # Orthopaedics
+    {
+        "disease": "Osteoarthritis",
+        "specKey": "ortho",
+        "severity": "moderate",
+        "description": "Degeneration of joint cartilage and the underlying bone.",
+        "symptoms": ["joint pain", "stiffness", "swollen joints", "grinding sensation",
+                     "limited range of motion", "knee pain", "hip pain", "osteoarthritis",
+                     "pain with movement", "joint tenderness"],
+    },
+    {
+        "disease": "Fracture",
+        "specKey": "ortho",
+        "severity": "moderate",
+        "description": "A break or crack in a bone.",
+        "symptoms": ["bone pain", "swelling", "bruising", "tenderness", "deformity",
+                     "inability to move", "fracture", "broken bone", "severe pain at injury site"],
+    },
+    {
+        "disease": "Lower Back Pain",
+        "specKey": "ortho",
+        "severity": "mild",
+        "description": "Pain in the lumbar region that can be acute or chronic.",
+        "symptoms": ["back pain", "lower back pain", "radiating leg pain", "muscle spasm",
+                     "stiffness in back", "sciatica", "pain sitting", "pain standing",
+                     "numbness in legs","accident","fall from building"],
+    },
+    # Paediatrics
+    {
+        "disease": "Chickenpox",
+        "specKey": "pedia",
+        "severity": "mild",
+        "description": "A highly contagious infection causing an itchy blister rash.",
+        "symptoms": ["itchy rash", "blisters", "fever", "fatigue", "loss of appetite",
+                     "chickenpox", "red spots", "fluid-filled blisters", "scabs"],
+    },
+    {
+        "disease": "Measles",
+        "specKey": "pedia",
+        "severity": "moderate",
+        "description": "A highly contagious viral disease with characteristic rash.",
+        "symptoms": ["fever", "cough", "runny nose", "red eyes", "skin rash", "measles",
+                     "koplik spots", "high fever", "rash spreading"],
+    },
+    # Gastroenterology
+    {
+        "disease": "Gastritis",
+        "specKey": "gastro",
+        "severity": "mild",
+        "description": "Inflammation of the stomach lining.",
+        "symptoms": ["abdominal pain", "nausea", "vomiting", "bloating", "indigestion",
+                     "burning stomach", "loss of appetite", "gastritis", "stomach ache"],
+    },
+    {
+        "disease": "Gastroenteritis",
+        "specKey": "gastro",
+        "severity": "mild",
+        "description": "Inflammation of the stomach and intestines.",
+        "symptoms": ["diarrhea", "vomiting", "nausea", "stomach cramps", "fever",
+                     "dehydration", "watery stool", "stomach pain", "food poisoning"],
+    },
+    {
+        "disease": "Irritable Bowel Syndrome",
+        "specKey": "gastro",
+        "severity": "mild",
+        "description": "A common disorder affecting the large intestine.",
+        "symptoms": ["abdominal pain", "cramping", "bloating", "gas", "diarrhea", "constipation",
+                     "ibs", "irregular bowel", "mucus in stool"],
+    },
+    # Psychiatry
+    {
+        "disease": "Depression",
+        "specKey": "psych",
+        "severity": "moderate",
+        "description": "A mood disorder causing persistent sadness and loss of interest.",
+        "symptoms": ["sadness", "hopelessness", "loss of interest", "fatigue", "sleep problems",
+                     "appetite change", "concentration problems", "depression", "worthlessness",
+                     "suicidal thoughts"],
+    },
+    {
+        "disease": "Anxiety Disorder",
+        "specKey": "psych",
+        "severity": "moderate",
+        "description": "Excessive worry and fear that interferes with daily activities.",
+        "symptoms": ["anxiety", "excessive worry", "restlessness", "irritability", "muscle tension",
+                     "sleep difficulty", "panic attacks", "racing heart", "sweating", "nervousness"],
+    },
+]
+
+EMERGENCY_KEYWORDS = [
+    # Strong exact phrases only (NO generic words like "pain")
+    "crushing chest pain",
+    "severe chest pain",
+    "heart attack",
+    "stroke",
+    "face drooping",
+    "arm weakness",
+    "slurred speech",
+    "loss of consciousness",
+    "unconscious",
+    "seizure",
+    "convulsion",
+    "cannot breathe",
+    "can't breathe",
+    "severe breathing difficulty",
+    "paralysis",
+    "suicidal thoughts"
+]
+
+SPEC_LABELS = {
+    "general": "General Physician",
+    "cardio":  "Cardiologist",
+    "neuro":   "Neurologist",
+    "derma":   "Dermatologist",
+    "ortho":   "Orthopaedic Surgeon",
+    "pedia":   "Paediatrician",
+    "gastro":  "Gastroenterologist",
+    "psych":   "Psychiatrist",
+
+}
