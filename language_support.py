@@ -341,6 +341,52 @@ PUNJABI_SYMPTOM_MAP = {
 }
 
 
+#  Generative body-part + pain patterns (Roman Urdu / Roman Punjabi) 
+# Roman Urdu/Punjabi spelling isn't standardized, so patching one phrase at
+# a time ("pet dard" but not "peth mein dard") is a losing game. Instead,
+# for each body part we know several common spellings for, we generate
+# every common grammatical pattern automatically ("X dard", "X mein dard",
+# "X ka dard", etc.) so new spelling variants don't need a manual entry.
+
+# body-part spelling variants -> final English symptom term
+_BODY_PART_TERMS = {
+    ('sar', 'sir'): 'headache',
+    ('pet', 'peth', 'pait', 'paet'): 'abdominal pain',
+    ('seene', 'sine', 'seena', 'chaati', 'chati'): 'chest pain',
+    ('gala', 'galay', 'gale'): 'sore throat',
+    ('kamar',): 'back pain',
+    ('jor', 'jodon', 'jorr'): 'joint pain',
+    ('kaan', 'kann'): 'ear pain',
+    ('aankh', 'ankh', 'akh'): 'eye pain',
+    ('dant', 'daant', 'dand'): 'tooth pain',
+    ('gardan',): 'neck pain',
+    ('tang', 'lat', 'lattan'): 'leg pain',
+    ('hath', 'haath'): 'hand pain',
+}
+
+# (connector pattern, which map this pattern belongs to)
+_URDU_DARD_PATTERNS = [
+    '{w} mein dard', '{w} dard', '{w} mein dukh', '{w} ka dard', '{w} ki takleef',
+    '{w} mein drd', '{w} drd',   # common vowel-dropped texting shorthand for 'dard'
+]
+_PUNJABI_DARD_PATTERNS = [
+    '{w} vich dard', '{w} wich dard', '{w} da dard', '{w} which dard',
+    '{w} vich drd', '{w} drd',
+]
+
+
+def _generate_body_part_variants():
+    for spellings, symptom in _BODY_PART_TERMS.items():
+        for w in spellings:
+            for pattern in _URDU_DARD_PATTERNS:
+                URDU_SYMPTOM_MAP.setdefault(pattern.format(w=w), symptom)
+            for pattern in _PUNJABI_DARD_PATTERNS:
+                PUNJABI_SYMPTOM_MAP.setdefault(pattern.format(w=w), symptom)
+
+
+_generate_body_part_variants()
+
+
 #  Emergency First-Aid Instructions 
 
 FIRST_AID_INSTRUCTIONS = {
@@ -758,6 +804,7 @@ def get_template(key: str, lang: str, sub_key: str = None, script: str = 'roman'
         template = template.get(sub_key, {})
     variant = _resolve_lang_key(template, lang, script)
     return template.get(variant, template.get("en", ""))
+
 
 
 
